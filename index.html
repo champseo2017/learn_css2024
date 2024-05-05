@@ -7,17 +7,108 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <h1>Welcome to My Website</h1>
-    <p>This is a basic example of progressive enhancement.</p>
+    <div class="Header">
+      <a href="/" class="LogoWrapper">
+        <img src="img/SOC-Logo.png" alt="Scone O'Clock logo"/>
+    </a>
+      <h1 class="Strap">Scones: the most resplendent of snacks</p>
+  </div>
+  <div class="IntroWrapper">
+      <h2 class="IntroText">
+          Occasionally maligned and misunderstood; the scone is a
+          quintessentially British classic.
+      </h2>
+      <div class="MoneyShot">
+          <p class="ImageCaption">
+              Incredible scones, picture from Wikipedia
+          </p>
+      </div>
+  </div>
+  <p>Recipe and serving suggestions follow.</p>
+  <div class="Ingredients">
+      <h3 class="SubHeader">Ingredients</h3>
+      <ul>
+          <li>350g self-raising flour, and a little spare for dusting</li>
+          <li>¼ tsp salt</li>
+          <li>1 tsp baking powder</li>
+          <li>85g butter, cut into cubes</li>
+          <li>3 tbsp caster sugar</li>
+          <li>175ml milk</li>
+          <li>1 tsp vanilla extract</li>
+          <li>squeeze lemon juice (see Know-how below)</li>
+          <li>beaten egg, to glaze</li>
+          <li>jam and clotted cream, to serve</li>
+      </ul>
+  </div>
+  <div class="HowToMake">
+      <h3 class="SubHeader">Method</h3>
+      <ol class="MethodWrapper">
+          <li>
+              Heat the oven to 220&deg;C (or gas mark 7). Tip the flour
+              into a large bowl along with the salt and baking powder,
+              then mix it all up. Add the butter in, then rub the butter
+              in with your fingers until the mix looks like fine crumbs.
+              When that is done, stir in the sugar.
+          </li>
+          <li>
+              Put the milk into a jug and heat in the microwave for about
+              20-30 seconds. It should be warm but not hot. Add the
+              vanilla and lemon juice to the milk and then put that to one
+              side and but a baking tray in the oven to warm.
+          </li>
+          <li>
+              Make a well in the dry mix, then add the liquid and combine
+              it quickly with a cutlery knife – it will seem pretty wet at
+              first. Spread some flour onto the work surface and tip the
+              dough out. Dredge the dough and your hands with a little
+              more flour, then fold the dough over 2-3 times until it's
+              smoother. Now pat it into a round shape about 4cm deep.
+          </li>
+          <li>
+              Take a 5cm cutter (Pro-tip – smooth-edged cutters tend to
+              cut more cleanly, giving a better rise) and dip it into some
+              flour. Plunge into the dough, then repeat until you have
+              four scones. By this point you’ll probably need to press
+              what's left of the dough back into a round to cut out
+              another four.
+          </li>
+          <li>
+              Brush the tops with beaten egg, then place onto the hot
+              baking tray.
+          </li>
+          <li>
+              Bake for 10 minutes until risen and golden on the top. Eat
+              just warm or cold on the day of baking, generously (and I do
+              mean generously) topped with jam and clotted cream.
+          </li>
+          <li>
+              If freezing, freeze once cool. Defrost, then put in a low
+              oven (about 160&deg;C) for a few minutes to refresh.
+          </li>
+      </ol>
+  </div>
     <script src="js_script.js"></script>
   </body>
 </html>
+
 <!-- 
-เกี่ยวกับ Responsive Web Design และ Progressive Enhancement:
+เกี่ยวกับการใช้แท็ก Viewport Meta เพื่อทำให้หน้าเว็บเป็นมิตรกับมือถือ:
 
-Responsive Web Design โดยสรุปคือการนำเสนอเนื้อหาเว็บในรูปแบบที่เหมาะสมที่สุดสำหรับขนาดหน้าจอและอุปกรณ์ที่ใช้เข้าถึง แต่เดิมนั้น Responsive Design มักจะเริ่มต้นจากการออกแบบสำหรับหน้าจอขนาดใหญ่ก่อน แล้วจึงปรับให้เล็กลงสำหรับหน้าจอเล็ก อย่างไรก็ตาม ต่อมาพบว่าการเริ่มต้นจากหน้าจอเล็กที่สุดก่อน แล้วจึงค่อยๆ ปรับปรุงการออกแบบและเนื้อหาสำหรับหน้าจอใหญ่ขึ้นนั้นให้ผลลัพธ์ที่ดีกว่า
+- โดยค่าเริ่มต้น เบราว์เซอร์บนมือถือ (เช่น iOS) จะแสดงผลหน้าเว็บแบบเดสก์ท็อปที่ย่อส่วนลงมา ทำให้ดูไม่เหมาะสมกับหน้าจอขนาดเล็ก
 
-Progressive Enhancement คือแนวคิดในการออกแบบเว็บโดยเริ่มต้นจากเนื้อหาและฟังก์ชันหลักที่จำเป็น แล้วจึงค่อยๆ เพิ่มชั้นของการออกแบบ (ผ่าน CSS) และการโต้ตอบ (ผ่าน JavaScript) สำหรับอุปกรณ์หรือเบราว์เซอร์ที่มีความสามารถสูงขึ้น ซึ่งช่วยให้เนื้อหาของคุณเข้าถึงได้กว้างขึ้นและมอบประสบการณ์ที่ดีให้กับผู้ใช้ทุกคน
+- เพื่อแก้ปัญหานี้ เราสามารถเพิ่มแท็ก Viewport Meta ลงในส่วน <head> ของเอกสาร HTML ดังนี้:
 
-ก่อนที่จะเริ่มลงรายละเอียดของ Responsive Web Design นั้น ยังมีบางเรื่องที่ต้องทำความเข้าใจให้ตรงกันก่อน ได้แก่ การรองรับเบราว์เซอร์ โปรแกรมแก้ไขข้อความ และเครื่องมือต่างๆ ที่จะใช้ในการพัฒนา
+  ```html
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  ```
+
+- แท็กนี้บอกเบราว์เซอร์ให้แสดงผลเนื้อหาตามความกว้างของหน้าจออุปกรณ์ (`width=device-width`) และตั้งระดับการซูมเริ่มต้นเป็น 1.0 (ไม่ซูมเข้าหรือออก)
+
+- การใช้แท็ก Viewport Meta เป็นส่วนสำคัญของการออกแบบเว็บแบบ Responsive ช่วยให้หน้าเว็บแสดงผลได้ดีบนหน้าจอขนาดต่างๆ
+
+- นอกจาก `width` และ `initial-scale` แล้ว แท็กนี้ยังมีตัวเลือกอื่นๆ ที่ใช้ควบคุมการแสดงผลของหน้าเว็บบนมือถือได้อีกด้วย
+
+โดยสรุป แท็ก Viewport Meta เป็นเครื่องมือสำคัญในการสร้างหน้าเว็บที่เป็นมิตรกับมือถือ ช่วยให้เนื้อหาปรับขนาดและแสดงผลได้อย่างเหมาะสมบนหน้าจอขนาดเล็ก ซึ่งเป็นส่วนหนึ่งของการออกแบบเว็บไซต์แบบ Responsive
+
+พื้นที่ของหน้าต่างเบราว์เซอร์ที่อนุญาตให้ดูหน้าเว็บได้เรียกอย่างเป็นทางการว่า "วิวพอร์ต" โดยพื้นที่วิวพอร์ตไม่รวมแถบเครื่องมือของเบราว์เซอร์และแถบ URL เป็นต้น
 -->
