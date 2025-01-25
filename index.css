@@ -1,80 +1,119 @@
-html {
+/* ตั้งค่าเริ่มต้นให้กับทุก element */
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
+  font-family: sans-serif;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
+/* จัดการแสดงผล body ให้อยู่กึ่งกลางหน้าจอทั้งแนวตั้งและแนวนอน */
+body {
+  display: flex;
+  align-items: center; /* จัดกึ่งกลางแนวตั้ง */
+  justify-content: center; /* จัดกึ่งกลางแนวนอน */
+  height: 100vh; /* กำหนดความสูงเต็มหน้าจอ */
 }
 
-img {
-  max-width: 100%;
+/* สไตล์สำหรับ card container */
+.card {
+  width: 30rem; /* กำหนดความกว้างของ card */
+  min-height: 400px; /* กำหนดความสูงขั้นต่ำ */
+  border-radius: 1rem; /* ทำให้มุมมน */
+  background-color: white; /* พื้นหลังสีขาว */
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ card */
+  padding: 40px; /* ระยะห่างขอบด้านใน */
+  overflow: hidden; /* ซ่อนเนื้อหาที่ล้นออกนอก card */
 }
 
-.logo {
-  width: 100%;
+/* สไตล์สำหรับหัวข้อ h1 ที่อยู่ใน card */
+.card > h1 {
+  font-size: 1.4rem; /* ขนาดตัวอักษร */
+  margin-bottom: 30px; /* ระยะห่างด้านล่าง */
+  text-align: center; /* จัดข้อความให้อยู่กึ่งกลาง */
 }
 
-@media screen and (min-width: 768px) {
-  body {
-    font-size: 18px;
-  }
-  h1 {
-    font-size: 2.5em;
-  }
+/* สไตล์สำหรับกลุ่ม input field */
+.inputPair {
+  display: flex; /* ใช้ flexbox ในการจัดเรียง elements */
+  flex-direction: column; /* จัดเรียง elements ในแนวตั้ง (บนลงล่าง) */
+  margin-bottom: 20px; /* เพิ่มระยะห่างด้านล่าง 20px */
+  min-height: 0; /* กำหนดความสูงขั้นต่ำเป็น 0 เพื่อป้องกันการขยายเกินขนาด */
 }
 
-@media screen and (min-width: 800px) {
-  body {
-    border-left: 4px solid #f9f9f9;
-    border-right: 4px solid #f9f9f9;
-    padding: 1rem 2rem;
-  }
+/* สไตล์สำหรับ label ใน inputPair และ span ใน row */
+.inputPair > label,    /* เลือก label ที่เป็น direct child ของ inputPair */
+.row span {
+  /* เลือก span ที่อยู่ภายใน row */
+  font-size: 0.9rem; /* กำหนดขนาดตัวอักษรให้เล็กกว่าปกติเล็กน้อย */
+  color: #555; /* กำหนดสีตัวอักษรเป็นสีเทาเข้ม */
+  font-weight: 500; /* กำหนดความหนาของตัวอักษรเป็นแบบกึ่งหนา */
+}
 
-  img {
-    max-width: 50%;
-  }
+.inputPair > label {
+  margin-bottom: 5px;
+}
 
-  .IntroWrapper {
-    display: flex; /* จัดเรียงแบบ Flexbox */
-    gap: 0 20px; /* เพิ่มช่องว่างระหว่างองค์ประกอบ */
-    flex: 1 1 auto;
-    align-items: center; /* จัดให้อยู่ตรงกลางในแนวตั้ง */
-  }
+/* สไตล์สำหรับ input field ที่อยู่ใน inputPair */
+.inputPair > input {
+  /* เลือก input ที่เป็น direct child ของ inputPair */
+  border-radius: 0.375rem; /* ทำให้มุมของ input มน */
+  border: 1px solid rgba(0, 0, 0, 0.2); /* กำหนดเส้นขอบหนา 1px สีดำโปร่งแสง 20% */
+  line-height: 40px; /* กำหนดความสูงของบรรทัดเป็น 40px */
+  padding: 0 10px; /* เพิ่มระยะห่างซ้าย-ขวา 10px ภายใน input */
+  outline: none; /* ลบการจับต้องการของ input */
+  font-size: 1rem; /* กำหนดขนาดตัวอักษรเป็น 1rem */
+  transition: ease 0.3s; /* เพิ่มการเปลี่ยนแปลงสีของ input เป็นสีดำเมื่อมีการกดค้าง */
+}
 
-  .MoneyShot,
-  .IntroText {
-    margin: 0;
-    flex: 1 1 50%;
-  }
+.inputPair > input:focus {
+  border-color: #07f; /* เปลี่ยนสีเส้นขอบเป็นสีฟ้าเมื่อมีการกดค้าง */
+  background: #0077ff05; /* เปลี่ยนสีพื้นหลังเป็นสีฟ้าเล็กน้อยเมื่อมีการกดค้าง */
+}
 
-  .MoneyShotImg {
-    filter: drop-shadow(0 0 20px #0008);
-    border: 0;
-  }
+/* สไตล์สำหรับการจัดวาง elements แบบแถวคู่ */
+.pairRow {
+  display: flex; /* ใช้ flexbox ในการจัดเรียง elements */
+  flex-wrap: nowrap; /* ไม่ให้ elements ขึ้นบรรทัดใหม่ */
+  justify-content: space-between; /* จัดให้มีระยะห่างระหว่าง elements เท่าๆ กัน */
+  column-gap: 10px; /* กำหนดระยะห่างระหว่างคอลัมน์ 10px */
+}
 
-  .IntroText {
-    padding: 0.5rem;
-    font-size: 2.5rem;
-    text-align: left;
-    position: relative;
-  }
+/* สไตล์สำหรับการจัดวาง elements แบบแถวเดี่ยว */
+.row {
+  display: flex; /* ใช้ flexbox ในการจัดเรียง elements */
+  justify-content: space-between; /* จัดให้มีระยะห่างระหว่าง elements เท่าๆ กัน */
+  flex-wrap: nowrap; /* ไม่ให้ elements ขึ้นบรรทัดใหม่ */
+  margin: 15px 0; /* เพิ่มระยะห่างด้านบนและล่าง 15px */
+}
 
-  .Ingredients {
-    font-size: 0.9rem;
-    float: right; /* ลอยไปทางขวา */
-    padding: 1rem;
-    margin: 0 0 0.5rem 1rem;
-    border-radius: 3px;
-    background-color: #ffffdf;
-    border: 9px solid #debb71;
-  }
+hr {
+  color: rgba(0, 0, 0, 0.2);
+}
 
-  .Ingredients h3 {
-    margin: 0;
-  }
+/* สไตล์สำหรับปุ่มชำระเงิน */
+#pay {
+  width: 100%; /* กำหนดความกว้างให้เต็มพื้นที่ */
+  height: 50px; /* กำหนดความสูงคงที่ */
+  border-radius: 0.75rem; /* ทำให้มุมปุ่มมน */
+  border: none; /* ลบเส้นขอบออก */
+  margin-top: 10px; /* เพิ่มระยะห่างด้านบน */
+  color: white; /* กำหนดสีตัวอักษรเป็นสีขาว */
+  background: #003fff; /* พื้นหลังสีน้ำเงิน */
+  font-weight: 500; /* ความหนาตัวอักษรแบบกึ่งหนา */
+  font-size: 1rem; /* ขนาดตัวอักษรปกติ */
+  cursor: pointer; /* เปลี่ยน cursor เป็นรูปมือเมื่อชี้ */
+}
+
+/* สไตล์สำหรับพื้นที่ที่ต้องการเน้น (highlight) */
+.highlight {
+  background: rgba(
+    0,
+    0,
+    100,
+    0.02
+  ); /* พื้นหลังสีน้ำเงินอ่อนมากๆ (โปร่งแสง 2%) */
+  margin: -40px; /* ขยายพื้นที่ออกด้านข้างและล่าง */
+  margin-top: 20px; /* กำหนดระยะห่างด้านบน */
+  padding: 40px; /* เพิ่มระยะห่างภายในทุกด้าน */
+  padding-top: 20px; /* ปรับระยะห่างด้านบนให้น้อยลง */
 }

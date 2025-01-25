@@ -1,108 +1,41 @@
-<!-- โครงสร้าง HTML สำหรับหน้าเว็บ -->
 <!DOCTYPE html>
 <html lang="th">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ตัวอย่างเว็บแบบยืดหยุ่น</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      .container {
-        /* ไม่กำหนด max-width เพื่อให้ขยายได้ไม่จำกัด */
-        width: 100%; /* ใช้พื้นที่เต็มหน้าจอ */
-        margin: 0 auto;
-        padding: 0 15px;
-      }
-
-      /* คำนวณสัดส่วนจากความกว้างทั้งหมดของพื้นที่ */
-      .main-content-wrapper {
-        display: flex;
-        gap: 2%; /* ให้มีระยะห่างระหว่างคอลัมน์ 2% */
-      }
-
-      .left-sidebar {
-        /* คิดจาก 200 หน่วยจากทั้งหมด 960 หน่วย */
-        width: 20%; /* ประมาณ 20.83% ปัดให้เป็นตัวเลขกลมๆ */
-      }
-
-      .main-content {
-        /* คิดจาก 660 หน่วยจากทั้งหมด 960 หน่วย */
-        width: 70%; /* ประมาณ 68.75% ปรับให้พอดีกับ gap */
-      }
-
-      .right-sidebar {
-        /* คิดจาก 100 หน่วยจากทั้งหมด 960 หน่วย */
-        width: 10%; /* ประมาณ 10.42% ปัดให้เป็นตัวเลขกลมๆ */
-      }
-
-      /* สำหรับหน้าจอขนาดเล็ก */
-      @media (max-width: 768px) {
-        .main-content-wrapper {
-          flex-direction: column;
-          gap: 20px;
-        }
-
-        .left-sidebar,
-        .main-content,
-        .right-sidebar {
-          width: 100%;
-        }
-      }
-    </style>
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div class="container">
-      <!-- ส่วนหัวของเว็บ -->
-      <header class="header">
-        <h1>ส่วนหัวของเว็บ</h1>
-      </header>
-
-      <!-- ส่วนเนื้อหาหลัก -->
-      <div class="main-content-wrapper">
-        <!-- คอลัมน์ด้านซ้าย -->
-        <aside class="left-sidebar">
-          <h2>เมนูด้านซ้าย</h2>
-          <p>เนื้อหาส่วนเมนู</p>
-        </aside>
-
-        <!-- คอลัมน์ตรงกลาง -->
-        <main class="main-content">
-          <h2>เนื้อหาหลัก</h2>
-          <p>เนื้อหาส่วนกลางของเว็บ</p>
-        </main>
-
-        <!-- คอลัมน์ด้านขวา -->
-        <aside class="right-sidebar">
-          <h2>ข้อมูลเพิ่มเติม</h2>
-          <p>เนื้อหาด้านขวา</p>
-        </aside>
+    <div class="card">
+      <div class="inputPair">
+        <label for="emailInput">Email address</label>
+        <input type="text" id="emailInput" placeholder="email@example.com" />
       </div>
+      <div class="inputPair">
+        <label for="cardNumber">Credit Card Number</label>
+        <input type="text" id="cardNumber" placeholder="xxxx-xxxx-xxxx-xxxx" />
+      </div>
+      <div class="pairRow">
+        <div class="inputPair">
+          <label for="eDate">Expiry Date</label>
+          <input type="text" id="eDate" placeholder="mm / yy" />
+        </div>
+        <div class="inputPair">
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" placeholder="x x x" />
+        </div>
+      </div>
+      <div class="highlight">
+        <div class="fees">
+          <div class="row"><span>Subtoal</span><b>$89</b></div>
+          <div class="row"><span>Platform Fee</span><b>$11</b></div>
+          <hr />
+          <div class="row"><span>Total Amount</span><b>$100</b></div>
+        </div>
 
-      <!-- ส่วนท้ายของเว็บ -->
-      <footer class="footer">
-        <p>ส่วนท้ายของเว็บ</p>
-      </footer>
+        <button id="pay">Make payment</button>
+      </div>
     </div>
-
-    <!-- 
-        ความแตกต่างสำคัญในการคิดคำนวณคือ:
-
-1. แทนที่จะหารด้วย 960px เราจะมองเป็นสัดส่วนจากทั้งหมด 100%
-2. เราสามารถปัดตัวเลขให้เป็นจำนวนกลมๆ เพื่อให้ง่ายต่อการทำงาน เช่น
-   - 20.83% ปัดเป็น 20%
-   - 68.75% ปรับเป็น 70%
-   - 10.42% ปัดเป็น 10%
-3. เราต้องคำนึงถึง gap (ระยะห่าง) ระหว่างคอลัมน์ด้วย ในที่นี้ใช้ 2%
-4. ผลรวมของความกว้างทั้งหมดรวม gap ต้องไม่เกิน 100%
-
-วิธีนี้จะทำให้เว็บของเราสามารถขยายได้ไม่จำกัด แต่ยังคงรักษาสัดส่วนที่ดูดีในทุกขนาดหน้าจอ จนกว่าจะถึงจุดที่เราต้องการเปลี่ยนเป็นแบบแนวตั้งสำหรับหน้าจอขนาดเล็ก
-    
-    
-    -->
   </body>
 </html>
